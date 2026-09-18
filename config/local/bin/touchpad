@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Toggle the laptop touchpad. Pass on/off to set it, or no args to toggle.
+exec omarchy toggle touchpad "${1:-toggle}"

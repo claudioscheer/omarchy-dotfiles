@@ -1,0 +1,12 @@
+# Run omarchy-restart-xcompose to apply changes
+
+# Include fast emoji access
+include "/usr/share/omarchy/default/xcompose"
+
+# US-intl dead acute: 'c -> ç (locale Compose would produce ć)
+<dead_acute> <c> : "ç" ccedilla
+<dead_acute> <C> : "Ç" Ccedilla
+
+# Identification
+<Multi_key> <space> <n> : "claudioscheer"
+<Multi_key> <space> <e> : "claudioscheer@protonmail.com"

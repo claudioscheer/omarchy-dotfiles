@@ -16,11 +16,26 @@ Then install KeePassXC if it is missing: `omarchy pkg add keepassxc`.
 | Workspace | Apps | Behavior |
 |---|---|---|
 | 1 (`Super+1`) | Brave | Tiled. Full size when it is the only window |
-| 2 (`Super+2`) | Alacritty / other terminals, `org.omarchy.agent` | Tiled |
-| 3 (`Super+3`) | KeePassXC, anything else opened here | Floating |
+| 2 (`Super+2`) | Orca (Stably AI) | Tiled |
+| 3 (`Super+3`) | Alacritty / other terminals, `org.omarchy.agent` | Tiled |
+| 4 (`Super+4`) | KeePassXC, Discord (native or web app), anything else opened here | Floating |
 | 5 (`Super+5`) | OBS Studio | Tiled |
+| 6–10 (`Super+6` … `Super+0`) | Unassigned | Persistent empty workspaces; tiled by default |
 
 Move a floating window with `Super` + left drag. Resize with `Super` + right drag. `Super+T` still floats or tiles one window.
+
+## Keyboard
+
+Two US layouts (same physical keys). Switch with Left Alt + Right Alt, or the bar layout label.
+
+| Layout | Variant | Behavior |
+|---|---|---|
+| US (first) | default | Plain English. `'` is an apostrophe. Super+… binds stay on QWERTY |
+| US (second) | `intl` | Dead keys. `'` then `c` is ç (`~/.XCompose` overrides locale ć) |
+
+## Touchpad
+
+Toggle with `touchpad` (or `omarchy toggle touchpad`). `touchpad on` / `touchpad off` set it. The laptop Fn touchpad key also works.
 
 ## Files
 
@@ -28,11 +43,15 @@ Move a floating window with `Super` + left drag. Resize with `Super` + right dra
 |---|---|
 | `config/hypr/hyprland.lua` | Workspace and window rules |
 | `config/hypr/monitors.lua` | Internal panel `eDP-1` at `1920x1080@300`, scale 1 |
+| `config/hypr/input.lua` | US + US-intl layouts, compose on Caps |
 | `config/hypr/autostart.lua` | `SSH_AUTH_SOCK` for the user ssh-agent |
+| `config/XCompose` | Cedilla on `'c` plus identification compose sequences |
+| `config/grok/skills/omarchy-dotfiles/SKILL.md` | Grok skill: always mirror live Omarchy edits into this repo |
 | `config/omarchy/shell.json` | Transparent bar |
 | `config/omarchy/defaults/agent` | Default agent: `grok` |
 | `config/environment.d/10-ssh-agent.conf` | systemd user environment |
 | `config/uwsm/env.d/20-ssh-agent` | Graphical session ssh-agent socket |
+| `config/local/bin/touchpad` | Toggle the laptop touchpad (`touchpad` / `on` / `off`) |
 
 Not copied: password databases, KeePass settings, SSH keys, themes that match stock Omarchy, Hyprland files that still match `/usr/share/omarchy/config/hypr/`.
 

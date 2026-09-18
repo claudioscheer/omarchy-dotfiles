@@ -28,18 +28,34 @@ require("default.hypr.toggles")
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })
 
+-- Keep workspaces 1-10 alive so Super+1..0 and the bar always have them.
+for workspace = 1, 10 do
+  hl.workspace_rule({ workspace = tostring(workspace), persistent = true })
+end
+
 -- Workspace 1: browser, tiled (full size when it's the only window).
 o.window("^(brave-browser)$", { workspace = "1", tile = true })
 
--- Workspace 2: terminals and Omarchy agents, tiled.
+-- Workspace 2: Orca (Stably AI), tiled.
+o.window("^(orca|Orca)$", { workspace = "2", tile = true })
+
+-- Workspace 3: terminals and Omarchy agents, tiled.
 o.window(
   "(Alacritty|kitty|com.mitchellh.ghostty|foot|org\\.codeberg\\.dnkl\\.foot|wezterm|org\\.omarchy\\.agent)",
-  { workspace = "2", tile = true }
+  { workspace = "3", tile = true }
 )
 
--- Workspace 3: floating. KeePass always opens here.
-o.window({ workspace = "3" }, { float = true })
-o.window("^(KeePassXC)$", { workspace = "3", float = true, no_screen_share = true })
+-- Workspace 4: floating. KeePass always opens here.
+o.window({ workspace = "4" }, { float = true })
+o.window("^(KeePassXC)$", { workspace = "4", float = true, no_screen_share = true })
+
+-- Discord: native, Flatpak, or Chromium/Brave --app (class like chromium-discord.com__...).
+-- Untag the --app window so the default chromium tile rule does not pin it tiled.
+o.window("^.+-discord\\.com__.*$", { tag = "-chromium-based-browser" })
+o.window(
+  "(^(discord|Discord)$|^.+-discord\\.com__.*$|^com\\.discordapp\\.Discord$)",
+  { workspace = "4", float = true }
+)
 
 -- Workspace 5: OBS Studio, tiled.
 o.window("^(obs|com\\.obsproject\\.Studio)$", { workspace = "5", tile = true })
