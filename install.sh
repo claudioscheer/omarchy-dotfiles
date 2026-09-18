@@ -32,6 +32,21 @@ install_file "$ROOT/config/environment.d/10-ssh-agent.conf" "$HOME/.config/envir
 install_file "$ROOT/config/uwsm/env.d/20-ssh-agent" "$HOME/.config/uwsm/env.d/20-ssh-agent" 700
 install_file "$ROOT/config/local/bin/touchpad" "$HOME/.local/bin/touchpad" 755
 
+# Interactive shell is omarchy-zsh (https://github.com/omacom/omarchy-zsh).
+# Stock templates first, then this overlay's ~/.zshrc (history autosuggestions).
+if command -v omarchy >/dev/null 2>&1; then
+  omarchy pkg add omarchy-zsh || true
+fi
+if command -v omarchy-setup-zsh >/dev/null 2>&1; then
+  omarchy-setup-zsh
+fi
+install_file "$ROOT/config/zshrc" "$HOME/.zshrc"
+
+if [[ ! -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh && ! -f $HOME/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+  mkdir -p "$HOME/.local/share/zsh"
+  git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git "$HOME/.local/share/zsh/zsh-autosuggestions"
+fi
+
 if command -v hyprctl >/dev/null 2>&1; then
   hyprctl reload >/dev/null
   hyprctl configerrors
@@ -46,3 +61,4 @@ echo
 echo "Done. New terminals/agents/Brave/KeePass follow the workspace rules after they next open."
 echo "If the laptop panel is not eDP-1 (hybrid GPU mux), edit ~/.config/hypr/monitors.lua."
 echo "KeePassXC is not installed by this script: omarchy pkg add keepassxc"
+echo "Login shell is zsh via omarchy-zsh. If it is still bash: chsh -s /usr/bin/zsh"

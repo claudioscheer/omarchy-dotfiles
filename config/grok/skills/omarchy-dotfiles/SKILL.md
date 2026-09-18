@@ -20,7 +20,7 @@ Use this together with the packaged Omarchy skill. Do not edit
 ## After every live change
 
 1. Edit the live file (`~/.config/hypr/`, `~/.config/omarchy/`, `~/.XCompose`,
-   `~/.config/environment.d/`, `~/.config/uwsm/`, terminal configs).
+   `~/.config/environment.d/`, `~/.config/uwsm/`, `~/.zshrc`, terminal configs).
 2. Write the same content into `~/Projects/omarchy-dotfiles/` at the path in
    that repo's README files table.
 3. If the file is new to the overlay, add it to `install.sh` and the README

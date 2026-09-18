@@ -9,7 +9,15 @@ cd ~/Projects/omarchy-dotfiles
 ./install.sh
 ```
 
-Then install KeePassXC if it is missing: `omarchy pkg add keepassxc`.
+Then, if they are missing:
+
+```bash
+omarchy pkg add keepassxc omarchy-zsh
+omarchy-setup-zsh
+chsh -s /usr/bin/zsh   # if the login shell is still bash
+```
+
+`./install.sh` already runs `omarchy pkg add omarchy-zsh` and `omarchy-setup-zsh` when those commands exist, then copies this repo’s `~/.zshrc` on top of the stock template.
 
 ## Layout
 
@@ -36,6 +44,17 @@ Two US layouts (same physical keys). Switch with Left Alt + Right Alt, or the ba
 
 The short bar label for the intl tooltip is remapped to PT in `~/.config/omarchy/shell.json`. This laptop has more than one keyboard device, so the label follows the tooltip of the device the widget is watching.
 
+## Shell
+
+Login shell is **zsh**, using the official [omarchy-zsh](https://github.com/omacom/omarchy-zsh) package (not a copy of `/usr/share/omarchy-zsh` in this repo).
+
+```bash
+sudo pacman -S omarchy-zsh   # or: omarchy pkg add omarchy-zsh
+omarchy-setup-zsh            # stock ~/.zshrc, ~/.bashrc (exec zsh), ~/.inputrc
+```
+
+User extras stay in `~/.zshrc` after the omarchy-zsh `source` lines (history autosuggestions). Do not vendor the package tree; updates come from `omarchy-zsh`.
+
 ## Touchpad
 
 Toggle with `touchpad` (or `omarchy toggle touchpad`). `touchpad on` / `touchpad off` set it. The laptop Fn touchpad key also works.
@@ -56,6 +75,7 @@ Toggle with `touchpad` (or `omarchy toggle touchpad`). `touchpad on` / `touchpad
 | `config/environment.d/10-ssh-agent.conf` | systemd user environment |
 | `config/uwsm/env.d/20-ssh-agent` | Graphical session ssh-agent socket |
 | `config/local/bin/touchpad` | Toggle the laptop touchpad (`touchpad` / `on` / `off`) |
+| `config/zshrc` | `~/.zshrc`: omarchy-zsh sources plus history autosuggestions |
 
 Not copied: password databases, KeePass settings, SSH keys, themes that match stock Omarchy, Hyprland files that still match `/usr/share/omarchy/config/hypr/`.
 
