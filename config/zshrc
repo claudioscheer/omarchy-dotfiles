@@ -4,6 +4,11 @@
 # Load zsh options, keybindings, and completion
 [[ -f /usr/share/omarchy-zsh/shell/zoptions ]] && source /usr/share/omarchy-zsh/shell/zoptions
 
+# omarchy-zsh does eval "$(try init ...)". After the first load, try() is a
+# wrapper around the TUI. A second `source ~/.zshrc` would run that wrapper,
+# get "Cancelled.", and eval it (command not found). Drop the wrapper first.
+unfunction try 2>/dev/null
+
 # Load shared shell configuration (aliases, functions, environment, tool init)
 [[ -f /usr/share/omarchy-zsh/shell/all ]] && source /usr/share/omarchy-zsh/shell/all
 
@@ -19,3 +24,7 @@ if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; 
 elif [[ -f $HOME/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source "$HOME/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
+
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
