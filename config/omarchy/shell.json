@@ -28,7 +28,10 @@
           "verticalFormat": "HH\n—\nmm"
         },
         {
-          "id": "omarchy.keyboard-layout"
+          "id": "water.keyboard-layout",
+          "labels": {
+            "English (US, intl., with dead keys)": "PT"
+          }
         },
         {
           "id": "omarchy.weather"

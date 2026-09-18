@@ -28,10 +28,12 @@ Move a floating window with `Super` + left drag. Resize with `Super` + right dra
 
 Two US layouts (same physical keys). Switch with Left Alt + Right Alt, or the bar layout label.
 
-| Layout | Variant | Behavior |
-|---|---|---|
-| US (first) | default | Plain English. `'` is an apostrophe. Super+… binds stay on QWERTY |
-| US (second) | `intl` | Dead keys. `'` then `c` is ç (`~/.XCompose` overrides locale ć) |
+| Layout | Variant | Bar label | Behavior |
+|---|---|---|---|
+| US (first) | default | EN | Plain English. `'` is an apostrophe. Super+… binds stay on QWERTY |
+| US (second) | `intl` | PT | Dead keys. `'` then `c` is ç (`~/.XCompose` overrides locale ć) |
+
+The short bar label for the intl tooltip is remapped to PT in `~/.config/omarchy/shell.json`. This laptop has more than one keyboard device, so the label follows the tooltip of the device the widget is watching.
 
 ## Touchpad
 
@@ -47,7 +49,8 @@ Toggle with `touchpad` (or `omarchy toggle touchpad`). `touchpad on` / `touchpad
 | `config/hypr/autostart.lua` | `SSH_AUTH_SOCK` for the user ssh-agent |
 | `config/XCompose` | Cedilla on `'c` plus identification compose sequences |
 | `config/grok/skills/omarchy-dotfiles/SKILL.md` | Grok skill: always mirror live Omarchy edits into this repo |
-| `config/omarchy/shell.json` | Transparent bar |
+| `config/omarchy/shell.json` | Transparent bar; US-intl layout labeled PT |
+| `config/omarchy/plugins/water.keyboard-layout/` | Cloned bar widget; intl tooltip labeled PT |
 | `config/omarchy/defaults/agent` | Default agent: `grok` |
 | `config/environment.d/10-ssh-agent.conf` | systemd user environment |
 | `config/uwsm/env.d/20-ssh-agent` | Graphical session ssh-agent socket |

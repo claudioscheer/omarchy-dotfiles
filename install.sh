@@ -24,6 +24,9 @@ install_file "$ROOT/config/hypr/autostart.lua" "$HOME/.config/hypr/autostart.lua
 install_file "$ROOT/config/XCompose" "$HOME/.XCompose"
 install_file "$ROOT/config/grok/skills/omarchy-dotfiles/SKILL.md" "$HOME/.grok/skills/omarchy-dotfiles/SKILL.md"
 install_file "$ROOT/config/omarchy/shell.json" "$HOME/.config/omarchy/shell.json"
+install_file "$ROOT/config/omarchy/plugins/water.keyboard-layout/manifest.json" "$HOME/.config/omarchy/plugins/water.keyboard-layout/manifest.json"
+install_file "$ROOT/config/omarchy/plugins/water.keyboard-layout/KeyboardLayout.qml" "$HOME/.config/omarchy/plugins/water.keyboard-layout/KeyboardLayout.qml"
+install_file "$ROOT/config/omarchy/plugins/water.keyboard-layout/KeyboardLayoutModel.js" "$HOME/.config/omarchy/plugins/water.keyboard-layout/KeyboardLayoutModel.js"
 install_file "$ROOT/config/omarchy/defaults/agent" "$HOME/.config/omarchy/defaults/agent"
 install_file "$ROOT/config/environment.d/10-ssh-agent.conf" "$HOME/.config/environment.d/10-ssh-agent.conf"
 install_file "$ROOT/config/uwsm/env.d/20-ssh-agent" "$HOME/.config/uwsm/env.d/20-ssh-agent" 700
@@ -36,6 +39,7 @@ fi
 
 if command -v omarchy >/dev/null 2>&1; then
   omarchy restart xcompose >/dev/null 2>&1 || true
+  omarchy-shell shell rescanPlugins >/dev/null 2>&1 || true
 fi
 
 echo
