@@ -67,6 +67,7 @@ Toggle with `touchpad` (or `omarchy toggle touchpad`). `touchpad on` / `touchpad
 | `config/hypr/monitors.lua` | Internal panel `eDP-1` at `1920x1080@300`, scale 1 |
 | `config/hypr/input.lua` | US + US-intl layouts, compose on Caps |
 | `config/hypr/autostart.lua` | `SSH_AUTH_SOCK` for the user ssh-agent |
+| `config/hypr/looknfeel.lua` | Tiling gaps: 2px between windows, 4px to the edge |
 | `config/XCompose` | Cedilla on `'c` plus identification compose sequences |
 | `config/grok/skills/omarchy-dotfiles/SKILL.md` | Grok skill: always mirror live Omarchy edits into this repo |
 | `config/omarchy/shell.json` | Transparent bar; US-intl layout labeled PT |
