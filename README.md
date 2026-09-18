@@ -18,9 +18,10 @@ Then install KeePassXC if it is missing: `omarchy pkg add keepassxc`.
 | 1 (`Super+1`) | Brave | Tiled. Full size when it is the only window |
 | 2 (`Super+2`) | Orca (Stably AI) | Tiled |
 | 3 (`Super+3`) | Alacritty / other terminals, `org.omarchy.agent` | Tiled |
-| 4 (`Super+4`) | KeePassXC, Discord (native or web app), anything else opened here | Floating |
+| 4 (`Super+4`) | KeePassXC, Discord (native or web app), Docker TUI (lazydocker), anything else opened here | Floating |
 | 5 (`Super+5`) | OBS Studio | Tiled |
-| 6–10 (`Super+6` … `Super+0`) | Unassigned | Persistent empty workspaces; tiled by default |
+| 6–9 (`Super+6` … `Super+9`) | Unassigned | Persistent empty workspaces; tiled by default |
+| 10 (`Super+0`) | Android Studio, AVD emulator / qemu, anything else opened here | Floating |
 
 Move a floating window with `Super` + left drag. Resize with `Super` + right drag. `Super+T` still floats or tiles one window.
 

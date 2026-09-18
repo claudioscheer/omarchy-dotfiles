@@ -49,6 +49,12 @@ o.window(
 o.window({ workspace = "4" }, { float = true })
 o.window("^(KeePassXC)$", { workspace = "4", float = true, no_screen_share = true })
 
+-- Docker TUI: launcher uses TUI.tile; Super+Shift+D uses org.omarchy.omarchy-launch-docker-tui.
+o.window(
+  "^(TUI\\.tile|org\\.omarchy\\.omarchy-launch-docker-tui)$",
+  { workspace = "4", float = true }
+)
+
 -- Discord: native, Flatpak, or Chromium/Brave --app (class like chromium-discord.com__...).
 -- Untag the --app window so the default chromium tile rule does not pin it tiled.
 o.window("^.+-discord\\.com__.*$", { tag = "-chromium-based-browser" })
@@ -59,3 +65,10 @@ o.window(
 
 -- Workspace 5: OBS Studio, tiled.
 o.window("^(obs|com\\.obsproject\\.Studio)$", { workspace = "5", tile = true })
+
+-- Workspace 10 (Super+0): floating. Android Studio, AVD emulator, and related qemu windows.
+o.window({ workspace = "10" }, { float = true })
+o.window(
+  "(^(jetbrains-studio|Emulator)$|^qemu-system-|^Android Emulator$)",
+  { workspace = "10", float = true }
+)
