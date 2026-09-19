@@ -5,12 +5,14 @@ local omarchy_gdk_scale = 1
 local omarchy_monitor_scale = 1
 
 hl.env("GDK_SCALE", tostring(omarchy_gdk_scale))
--- "auto" lets Hyprland pick ~1.5 on this 15.6" 1080p panel. Pin 1x explicitly.
+-- Catch-all for any other output. Pin 1x; "auto" scale is ~1.5 on this 1080p panel.
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = omarchy_monitor_scale })
+
+-- Internal 15.6" panel. Stays at origin so unplugging HDMI does not leave a gap.
 hl.monitor({ output = "eDP-1", mode = "1920x1080@300", position = "0x0", scale = 1 })
 
--- Configure a specific monitor.
--- hl.monitor({ output = "DP-2", mode = "2560x1440@144", position = "0x0", scale = 1 })
+-- Dell P2422HE on HDMI, left of the laptop.
+hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@60", position = "auto-left", scale = 1 })
 
--- Portrait/rotated secondary monitor (transform: 1 = 90°, 3 = 270°).
--- hl.monitor({ output = "DP-2", mode = "preferred", position = "auto", scale = 1, transform = 1 })
+-- External USB-C DisplayPort (NVIDIA DP-1). Same layout if HDMI is unused.
+hl.monitor({ output = "DP-1", mode = "preferred", position = "auto-right", scale = 1 })

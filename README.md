@@ -67,7 +67,7 @@ Toggle with `touchpad` (or `omarchy toggle touchpad`). `touchpad on` / `touchpad
 | Path in repo | Installs to |
 |---|---|
 | `config/hypr/hyprland.lua` | Workspace and window rules |
-| `config/hypr/monitors.lua` | Internal panel `eDP-1` at `1920x1080@300`, scale 1 |
+| `config/hypr/monitors.lua` | Laptop `eDP-1` `1920x1080@300` at `0x0`; Dell P2422HE HDMI-A-1 `1920x1080@60` `auto-left` |
 | `config/hypr/input.lua` | US + US-intl layouts, compose on Caps |
 | `config/hypr/autostart.lua` | `SSH_AUTH_SOCK` for the user ssh-agent |
 | `config/hypr/looknfeel.lua` | Tiling gaps: 2px between windows, 4px to the edge |
