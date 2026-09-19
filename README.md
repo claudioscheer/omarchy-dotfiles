@@ -28,7 +28,8 @@ chsh -s /usr/bin/zsh   # if the login shell is still bash
 | 3 (`Super+3`) | Alacritty / other terminals, `org.omarchy.agent` | Tiled |
 | 4 (`Super+4`) | KeePassXC, Discord (native or web app), Docker TUI (lazydocker), anything else opened here | Floating |
 | 5 (`Super+5`) | OBS Studio | Tiled |
-| 6–8 (`Super+6` … `Super+8`) | Unassigned | Persistent empty workspaces; tiled by default |
+| 6–7 (`Super+6` … `Super+7`) | Unassigned | Persistent empty workspaces; tiled by default |
+| 8 (`Super+8`) | Visual Studio Code | Tiled |
 | 9 (`Super+9`) | Graphe | Tiled |
 | 10 (`Super+0`) | Android Studio, AVD emulator / qemu, anything else opened here | Floating |
 

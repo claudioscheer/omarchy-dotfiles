@@ -66,6 +66,9 @@ o.window(
 -- Workspace 5: OBS Studio, tiled.
 o.window("^(obs|com\\.obsproject\\.Studio)$", { workspace = "5", tile = true })
 
+-- Workspace 8: Visual Studio Code, tiled.
+o.window("^(Code|code)$", { workspace = "8", tile = true })
+
 -- Workspace 9: Graphe (Bible study), tiled.
 o.window("^(Graphe|graphe-bible)$", { workspace = "9", tile = true })
 
