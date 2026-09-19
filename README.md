@@ -32,6 +32,8 @@ chsh -s /usr/bin/zsh   # if the login shell is still bash
 | 9 (`Super+9`) | Graphe | Tiled |
 | 10 (`Super+0`) | Android Studio, AVD emulator / qemu, anything else opened here | Floating |
 
+The file manager (Nautilus, Super+Shift+F) always floats on the current workspace.
+
 Move a floating window with `Super` + left drag. Resize with `Super` + right drag. `Super+T` still floats or tiles one window.
 
 ## Keyboard

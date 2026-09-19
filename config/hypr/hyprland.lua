@@ -69,6 +69,9 @@ o.window("^(obs|com\\.obsproject\\.Studio)$", { workspace = "5", tile = true })
 -- Workspace 9: Graphe (Bible study), tiled.
 o.window("^(Graphe|graphe-bible)$", { workspace = "9", tile = true })
 
+-- File manager (Nautilus): float on whichever workspace is current.
+o.window("^(org\\.gnome\\.Nautilus)$", { tag = "+floating-window" })
+
 -- Workspace 10 (Super+0): floating. Android Studio, AVD emulator, and related qemu windows.
 o.window({ workspace = "10" }, { float = true })
 o.window(
