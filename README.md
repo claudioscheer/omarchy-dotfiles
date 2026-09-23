@@ -74,7 +74,7 @@ Toggle with `touchpad` (or `omarchy toggle touchpad`). `touchpad on` / `touchpad
 | `config/hypr/looknfeel.lua` | Tiling gaps: 2px between windows, 4px to the edge |
 | `config/XCompose` | Cedilla on `'c` plus identification compose sequences |
 | `config/grok/skills/omarchy-dotfiles/SKILL.md` | Grok skill: always mirror live Omarchy edits into this repo |
-| `config/omarchy/shell.json` | Transparent bar; US-intl layout labeled PT |
+| `config/omarchy/shell.json` | Transparent bar; US-intl layout labeled PT; screensaver at 27.5 min, lock at 30 min |
 | `config/omarchy/plugins/water.keyboard-layout/` | Cloned bar widget; intl tooltip labeled PT |
 | `config/omarchy/defaults/agent` | Default agent: `grok` |
 | `config/environment.d/10-ssh-agent.conf` | systemd user environment |
