@@ -33,7 +33,7 @@ chsh -s /usr/bin/zsh   # if the login shell is still bash
 | 9 (`Super+9`) | Graphe | Tiled |
 | 10 (`Super+0`) | Android Studio, AVD emulator / qemu, anything else opened here | Floating |
 
-The file manager (Nautilus, Super+Shift+F) always floats on the current workspace.
+The file manager (Nautilus, Super+Shift+F) always floats on the current workspace. Floating windows open centered on that monitor. KeePassXC is kept there by ignoring its own request to place itself at the top left.
 
 Move a floating window with `Super` + left drag. Resize with `Super` + right drag. `Super+T` still floats or tiles one window.
 

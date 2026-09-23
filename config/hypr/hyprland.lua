@@ -45,14 +45,21 @@ o.window(
   { workspace = "3", tile = true }
 )
 
--- Workspace 4: floating. KeePass always opens here.
-o.window({ workspace = "4" }, { float = true })
-o.window("^(KeePassXC)$", { workspace = "4", float = true, no_screen_share = true })
+-- Workspace 4: floating, centered on the monitor that workspace is on.
+o.window({ workspace = "4" }, { float = true, center = true })
+-- KeePassXC is X11. It sends a ConfigureRequest for 0,0 after map, which overrides center.
+o.window("^(KeePassXC)$", {
+  workspace = "4",
+  float = true,
+  center = true,
+  no_screen_share = true,
+  suppress_event = "x11configurerequest",
+})
 
 -- Docker TUI: launcher uses TUI.tile; Super+Shift+D uses org.omarchy.omarchy-launch-docker-tui.
 o.window(
   "^(TUI\\.tile|org\\.omarchy\\.omarchy-launch-docker-tui)$",
-  { workspace = "4", float = true }
+  { workspace = "4", float = true, center = true }
 )
 
 -- Discord: native, Flatpak, or Chromium/Brave --app (class like chromium-discord.com__...).
@@ -60,7 +67,7 @@ o.window(
 o.window("^.+-discord\\.com__.*$", { tag = "-chromium-based-browser" })
 o.window(
   "(^(discord|Discord)$|^.+-discord\\.com__.*$|^com\\.discordapp\\.Discord$)",
-  { workspace = "4", float = true }
+  { workspace = "4", float = true, center = true }
 )
 
 -- Workspace 5: OBS Studio, tiled.
@@ -76,8 +83,11 @@ o.window("^(Graphe|graphe-bible)$", { workspace = "9", tile = true })
 o.window("^(org\\.gnome\\.Nautilus)$", { tag = "+floating-window" })
 
 -- Workspace 10 (Super+0): floating. Android Studio, AVD emulator, and related qemu windows.
-o.window({ workspace = "10" }, { float = true })
+o.window({ workspace = "10" }, { float = true, center = true })
 o.window(
   "(^(jetbrains-studio|Emulator)$|^qemu-system-|^Android Emulator$)",
-  { workspace = "10", float = true }
+  { workspace = "10", float = true, center = true }
 )
+
+-- Any other window that opens floating (dialogs included) is centered on its monitor.
+o.window({ float = true }, { center = true })
