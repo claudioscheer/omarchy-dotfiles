@@ -82,6 +82,9 @@ o.window("^(Graphe|graphe-bible)$", { workspace = "9", tile = true })
 -- File manager (Nautilus): float on whichever workspace is current.
 o.window("^(org\\.gnome\\.Nautilus)$", { tag = "+floating-window" })
 
+-- Omawrite, Omacalc, Omacut: same floating treatment as Nautilus.
+o.window("^(omawrite|omacalc|omacut)$", { tag = "+floating-window" })
+
 -- Workspace 10 (Super+0): floating. Android Studio, AVD emulator, and related qemu windows.
 o.window({ workspace = "10" }, { float = true, center = true })
 o.window(
