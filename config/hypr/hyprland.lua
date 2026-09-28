@@ -73,7 +73,7 @@ o.window(
 -- Workspace 5: floating. OBS Studio and REAPER.
 o.window({ workspace = "5" }, { float = true, center = true })
 o.window("^(obs|com\\.obsproject\\.Studio)$", { workspace = "5", float = true, center = true })
-o.window("^REAPER$", { workspace = "5", float = true, center = true })
+o.window("^REAPER$", { workspace = "5", float = true, center = true, maximize = true })
 
 -- Workspace 8: Visual Studio Code, tiled.
 o.window("^(Code|code)$", { workspace = "8", tile = true })
