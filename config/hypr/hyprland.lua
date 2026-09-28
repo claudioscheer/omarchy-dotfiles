@@ -33,18 +33,6 @@ for workspace = 1, 10 do
   hl.workspace_rule({ workspace = tostring(workspace), persistent = true })
 end
 
--- Workspace 1: browser, tiled (full size when it's the only window).
-o.window("^(brave-browser)$", { workspace = "1", tile = true })
-
--- Workspace 2: Orca (Stably AI), tiled.
-o.window("^(orca|Orca)$", { workspace = "2", tile = true })
-
--- Workspace 3: terminals and Omarchy agents, tiled.
-o.window(
-  "(Alacritty|kitty|com.mitchellh.ghostty|foot|org\\.codeberg\\.dnkl\\.foot|wezterm|org\\.omarchy\\.agent)",
-  { workspace = "3", tile = true }
-)
-
 -- Workspace 4: floating, centered on the monitor that workspace is on.
 o.window({ workspace = "4" }, { float = true, center = true })
 -- KeePassXC is X11. It sends a ConfigureRequest for 0,0 after map, which overrides center.
@@ -52,6 +40,7 @@ o.window("^(KeePassXC)$", {
   workspace = "4",
   float = true,
   center = true,
+  size = { 1040, 650 },
   no_screen_share = true,
   suppress_event = "x11configurerequest",
 })
@@ -70,16 +59,11 @@ o.window(
   { workspace = "4", float = true, center = true }
 )
 
--- Workspace 5: floating. OBS Studio and REAPER.
+-- Workspace 5: floating. OBS Studio, REAPER, and DaVinci Resolve.
 o.window({ workspace = "5" }, { float = true, center = true })
 o.window("^(obs|com\\.obsproject\\.Studio)$", { workspace = "5", float = true, center = true })
 o.window("^REAPER$", { workspace = "5", float = true, center = true, maximize = true })
-
--- Workspace 8: Visual Studio Code, tiled.
-o.window("^(Code|code)$", { workspace = "8", tile = true })
-
--- Workspace 9: Graphe (Bible study), tiled.
-o.window("^(Graphe|graphe-bible)$", { workspace = "9", tile = true })
+o.window("^resolve$", { workspace = "5", float = true, center = true, fullscreen = false })
 
 -- File manager (Nautilus): float on whichever workspace is current.
 o.window("^(org\\.gnome\\.Nautilus)$", { tag = "+floating-window" })
@@ -93,6 +77,27 @@ o.window(
   "(^(jetbrains-studio|Emulator)$|^qemu-system-|^Android Emulator$)",
   { workspace = "10", float = true, center = true }
 )
+
+-- Tiled apps last. Workspaces 4, 5, and 10 float whatever opens on them, and
+-- the last matching static rule wins. These have to come after those rules
+-- or a terminal opened from a floating workspace stays floating after it moves.
+-- Workspace 1: browser, tiled (full size when it's the only window).
+o.window("^(brave-browser)$", { workspace = "1", tile = true })
+
+-- Workspace 2: Orca (Stably AI), tiled.
+o.window("^(orca|Orca)$", { workspace = "2", tile = true })
+
+-- Workspace 3: terminals and Omarchy agents, tiled.
+o.window(
+  "(Alacritty|kitty|com.mitchellh.ghostty|foot|org\\.codeberg\\.dnkl\\.foot|wezterm|org\\.omarchy\\.agent)",
+  { workspace = "3", tile = true }
+)
+
+-- Workspace 8: Visual Studio Code, tiled.
+o.window("^(Code|code)$", { workspace = "8", tile = true })
+
+-- Workspace 9: Graphe (Bible study), tiled.
+o.window("^(Graphe|graphe-bible)$", { workspace = "9", tile = true })
 
 -- Any other window that opens floating (dialogs included) is centered on its monitor.
 o.window({ float = true }, { center = true })
