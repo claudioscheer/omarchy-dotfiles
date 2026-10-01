@@ -62,8 +62,11 @@ o.window(
 -- Workspace 5: floating. OBS Studio, REAPER, and DaVinci Resolve.
 o.window({ workspace = "5" }, { float = true, center = true })
 o.window("^(obs|com\\.obsproject\\.Studio)$", { workspace = "5", float = true, center = true })
-o.window("^REAPER$", { workspace = "5", float = true, center = true, maximize = true })
-o.window("^resolve$", { workspace = "5", float = true, center = true, fullscreen = false })
+o.window("^REAPER$", { workspace = "5", float = true, no_anim = true })
+-- Do not center every resolve window: context menus share this class.
+-- Workspace 5 still centers the project window. Stock stay_focused pins dialogs.
+o.window("^resolve$", { workspace = "5", float = true, fullscreen = false })
+o.window(".*[Rr]esolve.*", { stay_focused = false })
 
 -- File manager (Nautilus): float on whichever workspace is current.
 o.window("^(org\\.gnome\\.Nautilus)$", { tag = "+floating-window" })
@@ -101,3 +104,52 @@ o.window("^(Graphe|graphe-bible)$", { workspace = "9", tile = true })
 
 -- Any other window that opens floating (dialogs included) is centered on its monitor.
 o.window({ float = true }, { center = true })
+
+-- Main REAPER window only (title contains "REAPER v"). Maximized, not fullscreen.
+-- The saved X11 size arrives after map, so the open hook sets maximize again.
+o.window({ class = "^REAPER$", title = "REAPER v" }, {
+  float = true,
+  center = true,
+  maximize = true,
+  fullscreen = false,
+  suppress_event = "x11configurerequest",
+})
+
+hl.on("window.open", function(w)
+  if w.class ~= "REAPER" then
+    return
+  end
+  local title = w.title or ""
+  if not title:find("REAPER v", 1, true) then
+    return
+  end
+  hl.dispatch(hl.dsp.window.fullscreen({
+    mode = "maximized",
+    action = "set",
+    window = w,
+  }))
+end)
+
+-- REAPER menus (title "menu") and tooltips (empty title) are separate X11 windows.
+-- Centering or focusing them makes the menu bar draw broken popups.
+-- https://github.com/hyprwm/Hyprland/issues/2278
+o.window({ class = "^REAPER$", title = "^(menu)?$" }, {
+  float = true,
+  center = false,
+  maximize = false,
+  no_focus = true,
+  no_anim = true,
+  no_follow_mouse = true,
+})
+
+-- Resolve menus and tooltips use the same X11 titles. Must stay below the
+-- float-centering rule so center = false wins.
+o.window({ class = "^resolve$", title = "^(menu)?$" }, {
+  float = true,
+  center = false,
+  maximize = false,
+  fullscreen = false,
+  no_focus = true,
+  no_anim = true,
+  no_follow_mouse = true,
+})
