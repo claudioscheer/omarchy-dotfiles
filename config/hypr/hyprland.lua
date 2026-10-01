@@ -153,3 +153,12 @@ o.window({ class = "^resolve$", title = "^(menu)?$" }, {
   no_anim = true,
   no_follow_mouse = true,
 })
+
+-- https://wiki.hypr.land/Crashes-and-Bugs/#getting-the-log
+-- Session log plus OpenGL error messages. These cost performance.
+-- hl.config({
+--   debug = {
+--     disable_logs = false,
+--     gl_debugging = true,
+--   },
+-- })
